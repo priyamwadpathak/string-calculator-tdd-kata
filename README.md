@@ -24,8 +24,8 @@ bundle exec rspec --init
 
 ### Run all tests
 
-bundle exec rspec
+bundle exec rspec string_calculator_spec.rb
 
 ### Detailed output with colors
 
-rspec string_calculator_spec.rb --format documentation --color
+bundle exec rspec string_calculator_spec.rb --format documentation --color
