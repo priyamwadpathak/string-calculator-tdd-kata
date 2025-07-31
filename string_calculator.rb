@@ -6,6 +6,14 @@ class StringCalculator
         delimiter, numbers_string = parse_delimiter(numbers)
         normalized = numbers_string.gsub("\n", delimiter)
         normalized.split(delimiter).map(&:to_i).sum
+        number_list = normalized.split(delimiter).map(&:to_i)
+        
+        negatives = number_list.select { |n| n < 0 }
+        unless negatives.empty?
+        raise ArgumentError, "negative numbers not allowed #{negatives.join(',')}"
+        end
+        
+        number_list.sum
     end
   
     private
