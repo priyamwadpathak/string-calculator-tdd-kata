@@ -62,5 +62,13 @@ RSpec.describe StringCalculator do
             "negative numbers not allowed -2,-4"
         )
     end
+
+    it 'handles zero values and large numbers' do
+        calculator = StringCalculator.new
+        expect(calculator.add("0")).to eq(0)
+        expect(calculator.add("0,5")).to eq(5)
+        expect(calculator.add("1,0,2")).to eq(3)
+        expect(calculator.add("1000,2000")).to eq(3000)
+    end
   end
 end
