@@ -36,5 +36,11 @@ RSpec.describe StringCalculator do
         calculator = StringCalculator.new
         expect(calculator.add("//;\n1;2")).to eq(3)
     end
+
+    it 'handles pipe and asterisk delimiter' do
+        calculator = StringCalculator.new
+        expect(calculator.add("//|\n1|2|3")).to eq(6)
+        expect(calculator.add("//*\n1*2*3")).to eq(6)
+    end
   end
 end
