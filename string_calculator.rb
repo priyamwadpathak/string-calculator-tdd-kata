@@ -1,6 +1,6 @@
 # string_calculator.rb
 class StringCalculator
     def add(numbers)
-        # ToDo
+        0
     end
 end
