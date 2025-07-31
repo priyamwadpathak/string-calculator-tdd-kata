@@ -4,14 +4,8 @@ class StringCalculator
         return 0 if numbers.empty?
         
         delimiter, numbers_string = parse_delimiter(numbers)
-        normalized = numbers_string.gsub("\n", delimiter)
-        normalized.split(delimiter).map(&:to_i).sum
-        number_list = normalized.split(delimiter).map(&:to_i)
-        
-        negatives = number_list.select { |n| n < 0 }
-        unless negatives.empty?
-        raise ArgumentError, "negative numbers not allowed #{negatives.join(',')}"
-        end
+        number_list = extract_numbers(numbers_string, delimiter)
+        validate_no_negatives(number_list)
         
         number_list.sum
     end
@@ -25,6 +19,18 @@ class StringCalculator
             [delimiter, numbers_part]
         else
             [",", input]
+        end
+    end
+
+    def extract_numbers(numbers_string, delimiter)
+        normalized = numbers_string.gsub("\n", delimiter)
+        normalized.split(delimiter).map(&:to_i)
+    end
+  
+    def validate_no_negatives(numbers)
+        negatives = numbers.select { |n| n < 0 }
+        unless negatives.empty?
+            raise ArgumentError, "negative numbers not allowed #{negatives.join(',')}"
         end
     end
 end
