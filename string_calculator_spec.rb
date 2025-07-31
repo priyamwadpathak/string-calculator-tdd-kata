@@ -42,5 +42,13 @@ RSpec.describe StringCalculator do
         expect(calculator.add("//|\n1|2|3")).to eq(6)
         expect(calculator.add("//*\n1*2*3")).to eq(6)
     end
+
+    it 'raises exception for single negative number' do
+        calculator = StringCalculator.new
+        expect { calculator.add("-1") }.to raise_error(
+            ArgumentError, 
+            "negative numbers not allowed -1"
+        )
+    end
   end
 end
